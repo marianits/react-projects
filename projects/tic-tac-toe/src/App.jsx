@@ -1,4 +1,4 @@
-import { useState  } from "react"
+import { useState } from "react"
 import confetti from 'canvas-confetti' 
 import { Square } from "./components/Square"
 import { TURNS   } from "./constants"
@@ -19,7 +19,7 @@ function App() {
   const [winner, setWinner] = useState(null)
 
   const resetGame = () => {
-    setBoard(Array(9).fill(null))
+    setBoard(Array(9).fill(null)) 
     setTurn(TURNS.X)
     setWinner(null)
 
@@ -37,17 +37,17 @@ function App() {
     newBoard[index] = turn
     setBoard(newBoard)
 
-    //cambiar el turno
+    // cambiar el turno
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
 
-    //guardar el estado del juego:
+    // guardar el estado del juego:
     saveGameToStorage({
       board: newBoard,
       turn: newTurn
     })
 
-    //revisar si hay ganador
+    // revisar si hay ganador
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
       confetti()
